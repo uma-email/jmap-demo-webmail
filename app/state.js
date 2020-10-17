@@ -388,7 +388,7 @@ App.push = new O.EventSource({
 // ---
 
 App.credentials = new O.LocalStorage( 'credentials', false, {
-    server: 'http://localhost:8000/.well-known/jmap',
+    server: 'http://localhost:3000/.well-known/jmap',
     auth: 'http://192.168.0.52:8080/auth/'
 });
 
