@@ -388,9 +388,8 @@ App.push = new O.EventSource({
 // ---
 
 App.credentials = new O.LocalStorage( 'credentials', false, {
-    server: 'https://jmap.fastmail.com/.well-known/jmap',
-    username: '',
-    password: '',
+    server: 'http://localhost:8000/.well-known/jmap',
+    auth: 'http://192.168.0.52:8080/auth/'
 });
 
 App.credentials.login = function () {

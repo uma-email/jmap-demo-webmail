@@ -341,16 +341,10 @@ var loginView = new O.View({
                     value: O.bindTwoWay( App.credentials, 'server' ),
                 }),
                 el( 'h2.v-Login-title', [
-                    'Username',
+                    'Keycloak IAM URL',
                 ]),
                 new O.TextView({
-                    value: O.bindTwoWay( App.credentials, 'username' ),
-                }),
-                el( 'h2.v-Login-title', [
-                    'Password',
-                ]),
-                new O.TextView({
-                    value: O.bindTwoWay( App.credentials, 'password' ),
+                    value: O.bindTwoWay( App.credentials, 'auth' ),
                 }),
                 new O.ButtonView({
                     label: 'Log in',
