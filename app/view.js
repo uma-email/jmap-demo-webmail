@@ -261,14 +261,20 @@ var main = new O.View({
                                 method: 'undo',
                             }),
                             new O.ButtonView({
-                                positioning: 'absolute',
-                                layout: {
-                                    right: 15,
-                                },
                                 label: 'Agenda',
                                 isActive: O.bind( App.state, 'showAgenda' ),
                                 target: App.state,
                                 method: 'toggleAgenda',
+                            }),
+                            new O.ButtonView({
+                                positioning: 'absolute',
+                                layout: {
+                                    right: 15,
+                                },
+                                label: 'Log out',
+                                isActive: O.bind( App.state, 'logout' ),
+                                target: App.state,
+                                method: 'authLogout',
                             }),
                         ];
                     },
@@ -341,15 +347,21 @@ var loginView = new O.View({
                     value: O.bindTwoWay( App.credentials, 'server' ),
                 }),
                 el( 'h2.v-Login-title', [
-                    'Keycloak IAM URL',
+                    'Log in URL',
                 ]),
                 new O.TextView({
-                    value: O.bindTwoWay( App.credentials, 'auth' ),
+                    value: O.bindTwoWay( App.credentials, 'loginUrl' ),
+                }),
+                el( 'h2.v-Login-title', [
+                    'Log out URL',
+                ]),
+                new O.TextView({
+                    value: O.bindTwoWay( App.credentials, 'logoutUrl' ),
                 }),
                 new O.ButtonView({
                     label: 'Log in',
                     target: App.credentials,
-                    method: 'login',
+                    method: 'authLogin',
                 }),
             ]),
         ];

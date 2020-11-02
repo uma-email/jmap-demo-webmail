@@ -388,8 +388,9 @@ App.push = new O.EventSource({
 // ---
 
 App.credentials = new O.LocalStorage( 'credentials', false, {
-    server: 'http://localhost:3000/.well-known/jmap',
-    auth: 'http://192.168.0.52:8080/auth/'
+    server: 'https://localhost:3000/.well-known/jmap', // server/api
+    loginUrl: 'https://localhost:5000/login/',         // app/login
+    logoutUrl: 'https://localhost:5000/logout/'        // app/logout
 });
 
 App.credentials.login = function () {
@@ -398,6 +399,16 @@ App.credentials.login = function () {
     var password = this.get( 'password' );
     var accessToken = 'Basic ' + btoa( username + ':' + password );
     JMAP.auth.fetchSession( server, accessToken );
+};
+
+App.credentials.authLogin = function () {
+    var loginUrl = this.get( 'loginUrl' );
+    document.location.href = loginUrl;
+};
+
+App.credentials.authLogout = function () {
+    var logoutUrl = this.get( 'logoutUrl' );
+    document.location.href = logoutUrl;
 };
 
 if ( App.credentials.get( 'username' ) && App.credentials.get( 'password' ) ) {
