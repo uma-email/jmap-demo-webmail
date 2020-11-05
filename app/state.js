@@ -393,7 +393,7 @@ O.RunLoop.invoke( function () {
     
     App.credentials.login = function () {
         var server = this.get( 'server' );
-        var accessToken = keycloak.token;
+        var accessToken = 'Bearer ' + keycloak.token;
         JMAP.auth.fetchSession( server, accessToken );
     };
     
